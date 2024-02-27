@@ -30,12 +30,12 @@ async def greet():
     return {"Hello": "World"}
 
 # Get all posts
-@app.get("/posts", response_model=PostSchema, tags=["Posts"])
+@app.get("/posts", tags=["Posts"])
 async def get_posts():
     return {"data": posts}
 
 # Get a single post
-@app.get("/posts/{id}", response_model=PostSchema, tags=["Posts"])
+@app.get("/posts/{id}", tags=["Posts"])
 async def get_one_post(id: int):
     for post in posts:
         if post["id"] == id:
