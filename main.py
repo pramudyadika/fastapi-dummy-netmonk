@@ -41,3 +41,10 @@ async def get_one_post(id: int):
         if post["id"] == id:
             return {"data": post}
     return {"error": "Post not found"}
+
+# Create a post
+@app.post("/posts", tags=["Posts"])
+async def create_post(post: PostSchema):
+    post.id = len(posts) + 1
+    posts.append(post.dict())
+    return {"info": "Post created"}   
